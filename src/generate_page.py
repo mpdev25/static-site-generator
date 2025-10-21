@@ -29,10 +29,13 @@ def generate_page(from_path, template_path, dest_path):
     title = extract_title(original_markdown)
     template_with_title = template.replace("{{ Title }}", title)
     template_with_content = template_with_title.replace("{{ Content }}", content)
-    
+    stripped_path = from_path.replace("content/", "", 1)
+    root, _ = os.path.splitext(stripped_path)
+    html_path = root + ".html"
+    dest_path = os.path.join("public", html_path)
     dest_dir = os.path.dirname(dest_path)
     if dest_dir and not os.path.exists(dest_dir):
-        os.makedirs(os.path.dirname(dest_dir), exist_ok=True)
+        os.makedirs(dest_dir, exist_ok=True)
 
     try:
         with open(dest_path, 'w') as f:
