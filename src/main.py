@@ -55,8 +55,8 @@ def main():
         title = extract_title(original_markdown)
         template_with_title = template.replace("{{ Title }}", title)
         template_adjusted = template_with_title.replace("{{ Content }}", content)
-        template_with_href = template_adjusted.replace('href="/"', f'href="{base_path}"')
-        template_with_content = template_with_href.replace('src="/"', f'src="{base_path}"')
+        template_with_href = template_adjusted.replace('href="/', f'href="{base_path}')
+        template_with_content = template_with_href.replace('src="/', f'src="{base_path}')
         stripped_path = from_path.replace("content/", "", 1)
         root, _ = os.path.splitext(stripped_path)
         html_path = root + ".html"
