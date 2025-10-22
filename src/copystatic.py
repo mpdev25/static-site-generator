@@ -3,25 +3,25 @@ import shutil
 
 from textnode import TextType
 
-def copy_static(static, public):
+def copy_static(static, docs):
     
-    if os.path.exists(public):
+    if os.path.exists(docs):
         try:
-            shutil.rmtree(public)
+            shutil.rmtree(docs)
         except:
-            print(f"Error: could not delete '{public}'.")
+            print(f"Error: could not delete '{docs}'.")
     try:
-        os.mkdir(public)
+        os.mkdir(docs)
     except:
-        print(f"Error: could not recreate '{public}'.")
+        print(f"Error: could not recreate '{docs}'.")
     
-    if not os.path.exists(public):
-        os.makedirs(public)
+    if not os.path.exists(docs):
+        os.makedirs(docs)
     for item in os.listdir(static):
         static_path = os.path.join(static, item)
-        public_path = os.path.join(public, item)
+        public_path = os.path.join(docs, item)
 
         if os.path.isfile(static_path):
-            shutil.copy2(static_path, public_path)
+            shutil.copy2(static_path, docs)
         elif os.path.isdir(static_path):
-            copy_static(static_path, public_path)
+            copy_static(static_path, docs)

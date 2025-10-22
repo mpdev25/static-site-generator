@@ -13,12 +13,12 @@ def main():
     if len(sys.argv) > 1:
         base_path = sys.argv[1]
     print(f"The basepath is: {base_path}")
-    dest_path = "public"
+    dest_path = "docs"
   
 
     static = "static"
-    public = "public"
-    copy_static(static, public)
+    docs = "docs"
+    copy_static(static, docs)
     from_paths = [
         "content/index.md",
         "content/blog/glorfindel/index.md",
