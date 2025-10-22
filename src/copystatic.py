@@ -19,9 +19,9 @@ def copy_static(static, docs):
         os.makedirs(docs)
     for item in os.listdir(static):
         static_path = os.path.join(static, item)
-        public_path = os.path.join(docs, item)
+        docs_path = os.path.join(docs, item)
 
         if os.path.isfile(static_path):
-            shutil.copy2(static_path, docs)
+            shutil.copy2(static_path, docs_path)
         elif os.path.isdir(static_path):
-            copy_static(static_path, docs)
+            copy_static(static_path, docs_path)
